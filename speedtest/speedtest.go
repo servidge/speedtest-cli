@@ -155,6 +155,7 @@ func SpeedTest(c *cli.Context) error {
 
 	transport := http.DefaultTransport.(*http.Transport).Clone()
 	transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: c.Bool(defs.OptionSkipCertVerify)}
+	transport.Proxy = nil
 
 	// bind to source IP address if given, or if ipv4/ipv6 is forced
 	if src := c.String(defs.OptionSource); src != "" || (forceIPv4 || forceIPv6) {
