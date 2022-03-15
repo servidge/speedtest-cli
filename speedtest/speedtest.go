@@ -162,6 +162,11 @@ func SpeedTest(c *cli.Context) error {
 		transport.Proxy = nil
 	}
 
+	if str := c.String(defs.OptionProxyURL); str != "" {
+		proxyUrl, _ := url.Parse(str)
+		transport.Proxy = http.ProxyURL(proxyUrl)
+	}
+
 	// bind to source IP address if given, or if ipv4/ipv6 is forced
 	if src := c.String(defs.OptionSource); src != "" || (forceIPv4 || forceIPv6) {
 		var localTCPAddr *net.TCPAddr

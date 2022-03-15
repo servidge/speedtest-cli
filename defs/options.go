@@ -41,4 +41,5 @@ const (
 	OptionTelemetryShare  = "telemetry-share"
 	OptionTelemetryExtra  = "telemetry-extra"
 	OptionNoProxy         = "no-proxy"
+	OptionProxyURL        = "proxy-http"
 )
