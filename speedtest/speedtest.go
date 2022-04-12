@@ -155,12 +155,7 @@ func SpeedTest(c *cli.Context) error {
 
 	transport := http.DefaultTransport.(*http.Transport).Clone()
 	transport.TLSClientConfig = &tls.Config{InsecureSkipVerify: c.Bool(defs.OptionSkipCertVerify)}
-	proxyUrl, _ := url.Parse(os.Getenv("HTTP_PROXY"))
-	transport.Proxy = http.ProxyURL(proxyUrl)
-
-	if c.Bool(defs.OptionNoProxy) {
-		transport.Proxy = nil
-	}
+	transport.Proxy = nil
 
 	if str := c.String(defs.OptionProxyURL); str != "" {
 		proxyUrl, _ := url.Parse(str)

@@ -208,6 +208,10 @@ func main() {
 				Name: defs.OptionTelemetryExtra,
 				Usage: "Send a custom message along with the telemetry results.\n" +
 					"\tImplies --" + defs.OptionShare,
+			&cli.StringFlag{
+				Name: defs.OptionProxyURL,
+				Usage: "Uses an http proxy instead the local Source for the test.\n" +
+					"\tFormat: http://proxyIp:proxyPort",
 			},
 		},
 	}
